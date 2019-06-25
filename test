@@ -1,0 +1,37 @@
+var data = {
+		members: [ 
+		 {
+		 	email_address: email,
+		 	status: "subscribed",
+		 	merge_fields: {
+		 		FNAME: firstName,
+		 		LNAME: lastName
+		 	}
+		 }
+		]
+	};
+
+	var jsonData = JSON.stringify(data);
+
+	var options = {
+		url: 'https://us3.api.mailchimp.com/3.0/lists/2f41b862cb',
+		method: "POST",
+		headers: {
+			"Authorization": "philip1 38cc549a9b3b496e441834a42727ed7a-us3"
+		},
+		body: jsonData
+	};
+
+	request(options, function(error, response, body){
+		if(error) {
+			res.send("there an error sign-up. Try Again");
+		} else if (response.statusCode === 200) {
+			res.send("You succesfully Sign In");
+		} else {
+			res.send("there an error sign-up. Try Again");
+		}
+	});
+
+	
+
+});
